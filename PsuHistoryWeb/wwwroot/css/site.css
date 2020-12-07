@@ -1,0 +1,131 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    max-width: 80px;
+    height: auto;
+}
+
+#wrapper {
+    display: table;
+    height: 100%;
+}
+
+#header {
+    background: #a9c3ba;
+}
+
+#footer {
+    background: #274a2a;
+    color: white;
+    display: table-row;
+    height: 20%;
+}
+
+    #footer p {
+        margin-bottom: 5px;
+    }
+
+    #footer a {
+        color: white;
+    }
+
+    #footer hr {
+        margin: 0;
+        background: black;
+    }
+
+#wrapper, #footer {
+    width: 100%;
+}
+
+
+
+.footer__copyright {
+    background: #1e311b;
+    white-space: initial;
+}
+
+.about {
+    text-align: left;
+}
+
+.about h2 {
+    text-align: center;
+}
+
+.about h3 {
+    text-align: left;
+}
+
+.about p {
+    text-indent: 5%;
+    text-align: justify;
+}
+
+.about li {
+    list-style-position: inside;
+}
+
+.about .person {
+    text-indent: 0;
+    margin-left: 5%;
+}
+
+@media screen and (min-width: 900px) {
+    .about {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 900px) and (min-width: 500px) {
+    .about {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .about {
+        font-size: 16px;
+    }
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+    li a {
+        display: block;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+        li a:hover {
+            background-color: #a9c3ba;
+        }
+
+
+﻿.form-log-reg {
+    width: 24rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.log-reg-input-field {
+    width: 100%;
+}

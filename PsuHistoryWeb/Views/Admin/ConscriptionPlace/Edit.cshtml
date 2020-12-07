@@ -1,0 +1,45 @@
+﻿@model PsuHistoryWeb.Domain.Entities.Monuments.ConscriptionPlace
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="card mb-3">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6 col-pull-6 justify-content-center font-weight-bold">
+                        <h1>Изменение Места призыва</h1>
+                    </div>
+                    <div class="col-6 col-push-6 d-flex justify-content-end">
+                        <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("ConscriptionPlace", "ConscriptionPlace")'">
+                            Назад
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row justify-content-center">
+                    <div class="col-sm-8 col-lg-8 col-xl-5">
+
+                        @using (Html.BeginForm("Edit", "ConscriptionPlace"))
+                        {
+                            @Html.ValidationSummary(true, String.Empty, new { @style = "color:red" })
+                            <div>
+                                <div class="form-group">
+                                    <label asp-for="Place">Место призыва</label>
+                                    @Html.TextBoxFor(model => model.Place, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Place, String.Empty, new { @style = "color:red" })
+                                </div>
+                                <div>
+                                    <input type="submit" value="Изменить" class="btn btn-primary btn-block" />
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<PsuHistoryWeb.Domain.Entities.Monuments.TypeBurial>
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="card mb-3">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6 col-pull-6 justify-content-center font-weight-bold">
+                        <h1>Типы Захоронений</h1>
+                    </div>
+                    <div class="col-6 col-push-6 d-flex justify-content-end">
+                        <button type="button" class="btn btn-success" asp-action="" onclick="location.href='@Url.Action("Add", "TypeBurial")'">
+                            Добавить
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body" style="overflow: auto; padding: 20px 0 0 0;">
+                <table class="table">
+                    @if (Model.Count().Equals(0))
+                    {
+                        <thead class="thead-default"><tr><th>Пусто</th></tr></thead>
+                    }
+                    else
+                    {
+                        <thead class="thead-default">
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Type</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td class="text-center">@Html.DisplayTextFor(modelItem => item.Id)</td>
+                                <td class="text-center">@Html.DisplayTextFor(modelItem => item.Name)</td>
+                                <td class="text-center" style="min-width: 150px">
+                                    <button type="button" onclick="location.href='@Url.Action("Look", "TypeBurial", item, null)'" class="btn btn-warning" style="width: 38px; height: 38px; padding: 0"><img src="~/files/project/admin/view.png" style="width: 30px; height: 30px"></button>
+                                    <button type="button" onclick="location.href='@Url.Action("Edit", "TypeBurial", item, null)'" class="btn btn-success" style="width: 38px; height: 38px; padding: 0"><img src="~/files/project/admin/edit.png" style="width: 30px; height: 30px"></button>
+                                    <button type="button" onclick="location.href='@Url.Action("Delete", "TypeBurial", item, null)'" class="btn btn-danger" style="width: 38px; height: 38px; padding: 0"><img src="~/files/project/admin/delete.png" style="width: 30px; height: 30px"></button>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

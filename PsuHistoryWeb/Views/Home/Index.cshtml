@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PsuHistoryWeb.Domain.Entities.Monuments.Burial>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="map" style="height:93vh;"></div>
+<script>
+    window.onload = function () {
+        var map = L.map("map", {
+            center: [55.4856078, 28.7677338],
+            zoom: 7,
+            gestureHandling: true
+        }); 
+
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+
+        let iconOptions = {
+            iconUrl: '/files/project/admin/m.svg',
+            iconSize: [40, 40],
+            iconAnchor: [20, 40],
+            popupAnchor: [0, -25]
+        };
+
+        let markerOptions;
+
+        @foreach (var item in Model)
+        {
+            <text>markerOptions = { title: "@item.NumberBurial", clickable: true, draggable: false, icon: L.icon(iconOptions) };</text>
+            <text>L.marker([@item.Longitude, @item.Latitude], markerOptions).
+            bindPopup('<div><h4>@item.TypeBurial.Name №@item.NumberBurial</h4></div>' +
+                '<button type="button" class="btn btn-secondary" onclick="location.href=\'@Url.Action("GetBurial", "Home", new { item.Id })\'">Перейти</button>')
+            .openPopup().addTo(map);
+            </text>
+        }
+    }
+</script>

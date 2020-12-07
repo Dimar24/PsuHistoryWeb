@@ -1,0 +1,95 @@
+﻿@model PsuHistoryWeb.Domain.Entities.Monuments.Victim
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="card mb-3">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6 col-pull-6 justify-content-center font-weight-bold">
+                        <h1>Добавление Персоны</h1>
+                    </div>
+                    <div class="col-6 col-push-6 d-flex justify-content-end">
+                        <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Victim", "Victim")'">
+                            Назад
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row justify-content-center">
+                    <div class="col-sm-8 col-lg-8 col-xl-5">
+
+                        @using (Html.BeginForm("Add", "Victim"))
+                        {
+                            @Html.ValidationSummary(true, String.Empty, new { @style = "color:red" })
+                        <div>
+                            <div class="form-group">
+                                <label asp-for="FirstName">Фамилия</label>
+                                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.FirstName, String.Empty, new { @style = "color:red" })
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="LastName">Имя</label>
+                                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.LastName, String.Empty, new { @style = "color:red" })
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MiddleName">Отчество</label>
+                                @Html.TextBoxFor(model => model.MiddleName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.MiddleName, String.Empty, new { @style = "color:red" })
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="IsHeroSoviet">Герой Советского Союза?</label>
+                                @Html.CheckBoxFor(model => model.IsHeroSoviet)
+                                @Html.ValidationMessageFor(model => model.IsHeroSoviet, String.Empty, new { @style = "color:red" })
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="IsPartisan">Партизан?</label>
+                                @Html.CheckBoxFor(model => model.IsPartisan)
+                                @Html.ValidationMessageFor(model => model.IsPartisan, String.Empty, new { @style = "color:red" })
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DateOfBirth">Дата Рождения</label>
+                                @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.DateOfBirth, String.Empty, new { @style = "color:red" })
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="BirthPlaceId">Место Рождения</label>
+                                @Html.DropDownListFor(model => model.BirthPlaceId, ViewBag.BirthPlaces as IEnumerable<SelectListItem>, "Выберите Место Рождения", new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DateOfDeath">Дата Смерти</label>
+                                @Html.TextBoxFor(model => model.DateOfDeath, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.DateOfDeath, String.Empty, new { @style = "color:red" })
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TypeVictimId">Тип</label>
+                                @Html.DropDownListFor(model => model.TypeVictimId, ViewBag.TypeVictims as IEnumerable<SelectListItem>, "Выберите тип", new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DutyStationId">Место Службы</label>
+                                @Html.DropDownListFor(model => model.DutyStationId, ViewBag.DutyStations as IEnumerable<SelectListItem>, "Выберите Место Службы", new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ConscriptionPlaceId">Место Призыва</label>
+                                @Html.DropDownListFor(model => model.ConscriptionPlaceId, ViewBag.ConscriptionPlaces as IEnumerable<SelectListItem>, "Выберите Место Призыва", new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="BurialId">Номер Захоронения</label>
+                                @Html.DropDownListFor(model => model.BurialId, ViewBag.Burials as IEnumerable<SelectListItem>, "Выберите Захоронение", new { @class = "form-control" })
+                            </div>
+                            <div>
+                                <input type="submit" value="Добавить" class="btn btn-primary btn-block" />
+                            </div>
+                        </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
