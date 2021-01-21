@@ -1,0 +1,33 @@
+﻿@model IEnumerable<PsuHistoryWeb.Domain.Entities.Monuments.Victim>
+@{
+    ViewData["Title"] = "Жертвы/Погибшие";
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+        <div class="col-4 p-1">
+            <div class="card h-100" style="">
+                <div class="card-body">
+                    <h5 class="card-title">@item.FirstName @item.LastName @item.MiddleName</h5>
+                    @if (item.IsHeroSoviet)
+                    {
+                        <h6 class="card-subtitle mb-4">Герой Советского Союза</h6>
+                    }
+                    @{var partisan = "Партизан";}
+                    <h6 class="card-subtitle mb-4">@if (item.IsPartisan)@partisan / @item.TypeVictim.Name</h6>
+                    <h6 class="card-subtitle mb-2">Дата Рождения/Место Рождения</h6>
+                    <h6 class="card-subtitle mb-4">@item.DateOfBirth/@item.BirthPlace.Place</h6>
+                    <h6 class="card-subtitle mb-2">Место призыва/Место Службы</h6>
+                    <h6 class="card-subtitle mb-4">@item.ConscriptionPlace.Place/@item.DutyStation.Place</h6>
+                    <h6 class="card-subtitle mb-4">Дата смерти - @item.DateOfDeath</h6>
+                    <h6 class="card-subtitle mb-4">Захоронен в @item.Burial.TypeBurial.Name № @item.Burial.NumberBurial</h6>
+                    @*<a href="#" class="card-link">Ссылка карты</a>
+                    <a href="#" class="card-link">Другая ссылка</a>*@
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

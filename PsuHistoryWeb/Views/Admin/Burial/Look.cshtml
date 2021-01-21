@@ -1,0 +1,137 @@
+﻿@model PsuHistoryWeb.Domain.Entities.Monuments.Burial
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="card mb-3">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6 col-pull-6 justify-content-center font-weight-bold">
+                        <h1>Захоронение</h1>
+                    </div>
+                    <div class="col-6 col-push-6 d-flex justify-content-end">
+                        <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Burial", "Burial")'">
+                            Назад
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row justify-content-center">
+                    <div id="burial" class="col-12 col-sm-8 col-lg-5 col-xl-4">
+
+
+                        <div class="form-group">
+                            <b>Номер Захоронения</b>
+                            <p>@Model.NumberBurial</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Локация</b>
+                            <p>@Model.Location</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Общее число людей</b>
+                            <p>@Model.NumberPeople</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Число неизвестных людей</b>
+                            <p>@Model.UnknownNumber</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Год</b>
+                            <p>@Model.Year</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Координата X</b>
+                            <p>@Model.Longitude</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Координата Y</b>
+                            <p>@Model.Latitude</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Описание</b>
+                            <p>@Model.Description</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Тип Захоронения</b>
+                            <p>@Model.TypeBurial.Name</p>
+                            <hr>
+                        </div>
+
+                    </div>
+                    <div class="col-12 col-sm-8 col-lg-7 col-xl-8">
+                        <div id="map" style=" width: auto;">
+                        </div>
+                    </div>
+                    @{var index = 0; var activity = "active";}
+                    @foreach (var attach in ViewBag.Attachment)
+                    {
+                        <div class="carousel-item @if (index++ == 0) @activity">
+                            <img class="mx-auto d-block w-50" src="@attach.Path" alt="Первый слайд">
+                        </div>
+                    }
+                    <div class="col-sm-3">
+                        <button class="btn btn-success btn-block" onclick="location.href='@Url.Action("Edit", "Burial", @Model, null)'">
+                            Изменить
+                        </button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-danger btn-block" onclick="location.href='@Url.Action("Delete", "Burial", @Model, null)'">
+                            Удалить
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+        window.onload = function () {
+            var map = L.map("map", {
+                center: [@Model.Longitude, @Model.Latitude],
+                zoom: 3,
+                gestureHandling: true
+            });
+
+            L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            let iconOptions = {
+                iconUrl: '/files/project/admin/m.svg',
+                iconSize: [40, 40],
+                iconAnchor: [20, 40],
+            };
+
+            let markerOptions = { title: "", clickable: false, draggable: false, icon: L.icon(iconOptions) };
+
+            let marker = L.marker([@Model.Longitude, @Model.Latitude], markerOptions).addTo(map);
+
+            $("#map").height($("#burial").height() - 16);
+
+            $(window).resize(function () {
+                $("#map").height($("#burial").height() - 16);
+            });
+        };
+</script>
+
+
+<style>
+    img {
+        width: auto;
+        height: 80px;
+    }
+</style>

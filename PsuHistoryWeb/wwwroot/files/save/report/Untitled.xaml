@@ -1,0 +1,63 @@
+<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="Window" Title="MainWindow" Background="#FFFFFF" Width="793.8" Height="1122.66">
+  <Page.Resources>
+    <Style TargetType="TextBox" x:Key="rTxt">
+      <Setter Property="Background" Value="{x:Null}" />
+      <Setter Property="BorderBrush" Value="Black" />
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="FontSize" Value="10pt" />
+      <Setter Property="FontFamily" Value="Arial" />
+      <Setter Property="Padding" Value="2,0,2,0" />
+      <Setter Property="TextWrapping" Value="Wrap" />
+      <Setter Property="IsHitTestVisible" Value="false" />
+    </Style>
+  </Page.Resources>
+  <StackPanel>
+    <Canvas>
+      <TextBox Margin="1,1" Width="719.2" Height="104.95" Padding="0" TextWrapping="NoWrap" Style="{StaticResource rTxt}" />
+      <Image Source="Untitled0.png" Margin="9.45,9.45" Width="85.05" Height="85.05" />
+      <TextBox Margin="407.35,10.45" Width="303.4" Height="19.9" Text="Полоцкий государственный университет" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="407.35,38.8" Width="303.4" Height="57.7" Text="адрес: ул. Стрелецкая, 4, г. Полоцк, &#xD;&#xA;Витебская обл., Республика Беларусь&#xD;&#xA;email: a.korsak@psu.by" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="1,104.95" Width="719.2" Height="95.5" Padding="0" TextWrapping="NoWrap" Style="{StaticResource rTxt}" />
+      <TextBox Margin="10.45,104.95" Width="700.3" Height="29.35" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Статистика Захоронений" FontSize="20pt" Foreground="#000000" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource rTxt}" />
+      <TextBox Margin="19.9,152.2" Width="687.12" Height="48.25" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="19.9,152.2" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="Id" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="88.89,152.2" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="NumberBurial" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="157.88,152.2" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="Location" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="226.87,152.2" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="NumberPeople" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="295.86,152.2" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="UnknownNumber" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="364.85,152.2" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="Year" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="433.84,152.2" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="Latitude" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="502.83,152.2" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="Longitude" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="571.82,152.2" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="Description" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="640.81,152.2" Width="66.21" Height="48.25" Padding="2,1,2,1" Text="Name" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="1,199.45" Width="719.2" Height="48.25" Padding="0" TextWrapping="NoWrap" Style="{StaticResource rTxt}" />
+      <TextBox Margin="19.9,199.45" Width="687.12" Height="48.25" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="19.9,199.45" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="1" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="88.89,199.45" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="1" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="157.88,199.45" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="1" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="226.87,199.45" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="1" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="295.86,199.45" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="1" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="364.85,199.45" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="1" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="433.84,199.45" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="1" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="502.83,199.45" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="1" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="571.82,199.45" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="1" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="640.81,199.45" Width="66.21" Height="48.25" Padding="2,1,2,1" Text="1" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="1,246.7" Width="719.2" Height="48.25" Padding="0" TextWrapping="NoWrap" Style="{StaticResource rTxt}" />
+      <TextBox Margin="19.9,246.7" Width="687.12" Height="48.25" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="19.9,246.7" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="2" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="88.89,246.7" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="3" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="157.88,246.7" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="3" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="226.87,246.7" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="3" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="295.86,246.7" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="3" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="364.85,246.7" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="3" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="433.84,246.7" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="28,4779305498391" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="502.83,246.7" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="54,4700376128058" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="571.82,246.7" Width="69.99" Height="48.25" Padding="2,1,2,1" Text="33" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="640.81,246.7" Width="66.21" Height="48.25" Padding="2,1,2,1" Text="1" Foreground="#000000" Style="{StaticResource rTxt}" />
+      <TextBox Margin="1,1029.16" Width="719.2" Height="19.9" Padding="0" TextWrapping="NoWrap" Style="{StaticResource rTxt}" />
+      <TextBox Margin="10.45,1029.16" Width="700.3" Height="19.9" HorizontalAlignment="Center" VerticalAlignment="Center" Text="C 2020 Copyright: Научно-образовательный проект Полоцк. Освобождение. Память." Foreground="#000000" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{StaticResource rTxt}" />
+      <TextBox Margin="1,-36.8" Width="201" Height="21" Padding="0" TextWrapping="NoWrap" Style="{StaticResource rTxt}" />
+      <TextBox Margin="1,-36.8" Width="190" Height="21" Text="DEMO VERSION" Foreground="#000000" Style="{StaticResource rTxt}" />
+    </Canvas>
+  </StackPanel>
+</Page>

@@ -1,0 +1,105 @@
+﻿@model PsuHistoryWeb.Domain.Entities.Monuments.Victim
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="card mb-3">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6 col-pull-6 justify-content-center font-weight-bold">
+                        <h1>Персона</h1>
+                    </div>
+                    <div class="col-6 col-push-6 d-flex justify-content-end">
+                        <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Victim", "Victim")'">
+                            Назад
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row justify-content-center">
+                    <div class="col-sm-8 col-lg-8 col-xl-5">
+
+                        <div class="form-group">
+                            <b>Фамилия</b>
+                            <p>@Model.FirstName</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Имя</b>
+                            <p>@Model.LastName</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Отчество</b>
+                            <p>@Model.MiddleName</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Герой Советского Союза?</b>
+                            <p>@Model.IsHeroSoviet</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Партизан?</b>
+                            <p>@Model.IsPartisan</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Дата Рождения</b>
+                            <p>@Model.DateOfBirth</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Место Рождения</b>
+                            <p>@Model.BirthPlace.Place</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Дата Смерти</b>
+                            <p>@Model.DateOfDeath</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Тип</b>
+                            <p>@Model.TypeVictim.Name</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Место Службы</b>
+                            <p>@Model.DutyStation.Place</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Место Призыва</b>
+                            <p>@Model.ConscriptionPlace.Place</p>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <b>Номер Захоронения</b>
+                            <p>@Model.Burial.NumberBurial</p>
+                            <hr>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button class="btn btn-success btn-block" onclick="location.href='@Url.Action("Edit", "Victim", @Model, null)'">
+                                    Изменить
+                                </button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button class="btn btn-danger btn-block" onclick="location.href='@Url.Action("Delete", "Victim", @Model, null)'">
+                                    Удалить
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

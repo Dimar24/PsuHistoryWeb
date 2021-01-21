@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - PsuWebApplication</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/leaflet/dist/css/leaflet.css" />
+    <link rel="stylesheet" href="~/lib/leaflet-gesture-handling/dist/css/leaflet-gesture-handling.css">
+</head>
+<body>
+
+    <div id="wrapper">
+        <div id="header">
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-light topnav">
+                    <img src="/files/project/psu-logo.png" style="width: 80px;">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    @{ var isAuth = User.Identity.IsAuthenticated; }
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark active" asp-area="" asp-controller="Home" asp-action="Index">Карта Захоронений</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Victim" asp-action="Index">Жертвы/Погибшие</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">Книга</a>
+                            </li>
+                            @if (isAuth@*&& User.IsInRole("admin")*@)
+{
+<li class="nav-item text-dark">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Админ Панель</a>
+</li>
+}
+                        </ul>
+                        <a class="nav-link text-dark enter-btn" asp-area="" asp-controller="Account" asp-action="@(isAuth ? "Logout" : "Login")">@(isAuth ? "Выход" : "Вход")</a>
+
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </nav>
+            </header>
+        </div>
+        <div id="content">
+            @RenderBody()
+        </div>
+        <div id="footer">
+            <div class="container">
+                <div class="row justify-content-center pb-3">
+                    <div class="col-11 col-sm-8 col-md-6 col-lg-5 px-3 pt-3">
+                        <div class="footer__main mb-2">
+                            <b>Полоцкий государственный университет</b>
+                        </div>
+                        <hr />
+                        <div class="footer__advers mt-2">
+                            <p>адрес: ул. Стрелецкая, 4, г. Полоцк, Витебская обл., Республика Беларусь</p>
+                            <p>email: a.korsak@psu.by</p>
+                        </div>
+                    </div>
+                    <div class="col-11 col-sm-8 col-md-3 col-lg-2 px-3 pt-3">
+                        <div class="footer__main mb-2">
+                            <b>Информация</b>
+                        </div>
+                        <hr />
+                        <div class="footer__advers mt-2">
+                            <p><a asp-area="" asp-controller="Home" asp-action="About">О нас</a></p>
+                        </div>
+
+                        @*<p><a asp-area="" asp-controller="Home" asp-action="Index">Связаться с нами</a></p>*@
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid footer__copyright text-center py-2">
+                &copy; 2020 Copyright: Научно-образовательный проект Полоцк. Освобождение. Память.
+            </div>
+        </div>
+    </div>
+
+    @*
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PsuWebApplication</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    *@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/leaflet/dist/js/leaflet.min.js.js"></script>
+    <script src="~/lib/leaflet-gesture-handling/dist/js/leaflet-gesture-handling.min.js"></script>
+    <script src="~/lib/flowtype/dist/js/flowtype.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <!-- Cookie Consent by https://www.FreePrivacyPolicy.com -->
+    <script type="text/javascript" src="//www.freeprivacypolicy.com/public/cookie-consent/3.1.0/cookie-consent.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            cookieconsent.run({ "notice_banner_type": "interstitial", "consent_type": "express", "palette": "dark", "language": "en", "website_name": "Dimka228", "cookies_policy_url": "https://andersenlab.com/" });
+        });
+    </script>
+
+    <noscript>Cookie Consent by <a href="https://www.FreePrivacyPolicy.com/free-cookie-consent/" rel="nofollow noopener">FreePrivacyPolicy.com</a></noscript>
+    <!-- End Cookie Consent -->
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

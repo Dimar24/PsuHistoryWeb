@@ -1,0 +1,153 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    max-width: 80px;
+    height: auto;
+}
+
+#wrapper {
+    display: table;
+    height: 100%;
+}
+
+#header {
+    background: #a9c3ba;
+}
+
+#footer {
+    background: #274a2a;
+    color: white;
+    display: table-row;
+    height: 20%;
+}
+
+    #footer p {
+        margin-bottom: 5px;
+    }
+
+    #footer a {
+        color: white;
+    }
+
+    #footer hr {
+        margin: 0;
+        background: black;
+    }
+
+#wrapper, #footer {
+    width: 100%;
+}
+
+
+
+.footer__copyright {
+    background: #1e311b;
+    white-space: initial;
+}
+
+.about {
+    text-align: left;
+}
+
+    .about h2 {
+        text-align: center;
+    }
+
+    .about h3 {
+        text-align: left;
+    }
+
+    .about p {
+        text-indent: 5%;
+        text-align: justify;
+    }
+
+    .about li {
+        list-style-position: inside;
+    }
+
+    .about .person {
+        text-indent: 0;
+        margin-left: 5%;
+    }
+
+@media screen and (min-width: 900px) {
+    .about {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 900px) and (min-width: 500px) {
+    .about {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .about {
+        font-size: 16px;
+    }
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+/* Add a black background color to the top navigation */
+.topnav {
+    font-size: 20px;
+    color: black;
+    text-shadow: 0.5px 0.5px white, 1px 1px white, -0.5px -0.5px white, -1px -1px white, -0.5px 0.5px white, 0.5px -0.5px white, -1px 1px white, 1px -1px white, -1.5px -1.5px 2px rgba(0,0,0,.3), -1.5px 1.5px 2px rgba(0,0,0,.3), 1.5px 1.5px 2px rgba(0,0,0,.3), 1.5px -1.5px 2px rgba(0,0,0,.3);
+    overflow: hidden;
+    padding: 0;
+    font-weight: 600;
+}
+
+    .topnav img {
+        padding: 5px;
+    }
+
+    .topnav a {
+        display: inline-block;
+        color: #07aa19;
+        line-height: 1;
+        text-decoration: none;
+        cursor: pointer;
+        position: relative;
+    }
+
+        .topnav a:after {
+            display: block;
+            content: "";
+            background-color: red;
+            height: 3px;
+            width: 0%;
+            left: 50%;
+            position: absolute;
+            -webkit-transition: width .3s ease-in-out;
+            -moz--transition: width .3s ease-in-out;
+            transition: width .3s ease-in-out;
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+
+        .topnav a:hover:after,
+        .topnav a:focus:after {
+            width: 100%;
+        }
+
+
+

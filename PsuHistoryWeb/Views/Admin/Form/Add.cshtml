@@ -1,0 +1,196 @@
+﻿@model PsuHistoryWeb.Domain.Entities.Monuments.Burial
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="card mb-3">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6 col-pull-6 justify-content-center font-weight-bold">
+                        <h1>Добавление Захоронения</h1>
+                    </div>
+                    <div class="col-6 col-push-6 d-flex justify-content-end">
+                        <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Burial", "Burial")'">
+                            Назад
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+
+                @using (Html.BeginForm("Add", "Burial", String.Empty, FormMethod.Post, true, new { @enctype = "multipart/form-data" }))
+                {
+                    <div class="row justify-content-center">
+                        <div id="burial" class="col-12 col-sm-8 col-lg-5 col-xl-4">
+                            @Html.ValidationSummary(true, String.Empty, new { @style = "color:red" })
+                            <div>
+                                <div class="form-group">
+                                    <label asp-for="NumberBurial">Номер Захоронения</label>
+                                    @Html.TextBoxFor(model => model.NumberBurial, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.NumberBurial, String.Empty, new { @style = "color:red" })
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Location">Локация</label>
+                                    @Html.TextBoxFor(model => model.Location, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Location, String.Empty, new { @style = "color:red" })
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="NumberPeople">Общее число людей</label>
+                                    @Html.TextBoxFor(model => model.NumberPeople, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.NumberPeople, String.Empty, new { @style = "color:red" })
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="UnknownNumber">Число неизвестных людей</label>
+                                    @Html.TextBoxFor(model => model.UnknownNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.UnknownNumber, String.Empty, new { @style = "color:red" })
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Year">Год</label>
+                                    @Html.TextBoxFor(model => model.Year, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Year, String.Empty, new { @style = "color:red" })
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Latitude">Широта</label>
+                                    @Html.TextBoxFor(model => model.Latitude, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Latitude, String.Empty, new { @style = "color:red" })
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Longitude">Долгота</label>
+                                    @Html.TextBoxFor(model => model.Longitude, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Longitude, String.Empty, new { @style = "color:red" })
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Description">Описание</label>
+                                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @style = "max-height: 130px; min-height: 62px" })
+                                    @Html.ValidationMessageFor(model => model.Description, String.Empty, new { @style = "color:red" })
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="TypeBurialId">Тип Захоронения</label>
+                                    @Html.DropDownListFor(model => model.TypeBurialId, ViewBag.TypeBurials as IEnumerable<SelectListItem>, "Выберите тип", new { @class = "form-control" })
+                                </div>
+                                <div id="imagesInput">
+                                    <label>Изображение</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="imgInput" name="uploads" multiple accept="image/*">
+                                        <label class="custom-file-label" for="customFile">Выберите файлы</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-8 col-lg-7 col-xl-8">
+                            <div id="map" style=" width: auto;">
+                            </div>
+                            <div id="images" class="form-group form-control" style="overflow-x: scroll; width: auto; padding: 0;">
+                                <label class="card-header container">Картинки</label>
+                                <div id="im" class="d-flex justify-content-center mt-3 w-100"></div>
+                            </div>
+                        </div>
+
+                        <div id="button-submit" class="row col-12 col-sm-8 col-lg-5 col-xl-4">
+                            <div class="col-12">
+                                <input type="submit" value="Добавить" class="btn btn-primary btn-block" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.onload = function () {
+        var map = L.map("map", {
+            center: [55.4856078, 28.7677338],
+            zoom: 3,
+            gestureHandling: true
+        });
+
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        let iconOptions = {
+            iconUrl: '/files/project/admin/m.svg',
+            iconSize: [40, 40],
+            iconAnchor: [20, 40],
+        };
+
+        let markerOptions = { title: "", clickable: true, draggable: true, icon: L.icon(iconOptions) };
+
+        let marker = L.marker([55.4856078, 28.7677338], markerOptions);
+        marker.on('mousedown + mousemove', function (e) {
+            $('input[name="Latitude"]').val(e.latlng.lng);
+            $('input[name="Longitude"]').val(e.latlng.lat);
+        });
+        marker.addTo(map);
+
+        map.on('click', function (e) {
+            $('input[name="Latitude"]').val(e.latlng.lng);
+            $('input[name="Longitude"]').val(e.latlng.lat);
+            marker.setLatLng(L.latLng(e.latlng.lat, e.latlng.lng))
+        });
+
+        let latlng;
+        $('input[name="Latitude"]').on("input", function () {
+            latlng = L.latLng($('input[name="Longitude"]').val(), $('input[name="Latitude"]').val());
+            marker.setLatLng(latlng);
+        });
+        $('input[name="Longitude"]').on("input", function () {
+            latlng = L.latLng($('input[name="Longitude"]').val(), $('input[name="Latitude"]').val());
+            marker.setLatLng(latlng);
+        });
+
+        $(function () {
+            function readURL(input) {
+                $(input.files).each(function (i, el) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('<img>').attr('src', e.target.result).appendTo('#im');
+                    };
+                    reader.readAsDataURL(input.files[i]);
+                });
+            }
+
+            $("#imgInput").change(function () {
+                readURL(this);
+            });
+        });
+
+        $('input[id="imgInput"]').on("input", function () {
+            console.log("test");
+            $("#im").empty();
+        });
+
+        $("#map").height(0.75 * $("#burial").height());
+        $("#images").height(0.25 * $("#burial").height());
+        $("#burial").height($("#images").height() + $("#map").height())
+
+        $(window).resize(function () {
+            $("#map").height(0.75 * $("#burial").height());
+            $("#images").height(0.25 * $("#burial").height());
+        });
+    };
+</script>
+
+<style>
+    #images {
+        margin-bottom: 0 !important;
+    }
+
+    #imagesInput {
+        margin-bottom: 0 !important;
+    }
+
+    #button-submit {
+        margin-top: 1rem;
+    }
+
+    img {
+        width: auto;
+        height: 80px;
+    }
+</style>

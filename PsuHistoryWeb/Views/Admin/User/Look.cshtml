@@ -1,0 +1,49 @@
+﻿@model PsuHistoryWeb.Domain.Entities.Monuments.TypeBurial
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="card mb-3">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6 col-pull-6 justify-content-center font-weight-bold">
+                        <h1>Тип Захоронения</h1>
+                    </div>
+                    <div class="col-6 col-push-6 d-flex justify-content-end">
+                        <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("TypeBurial", "TypeBurial")'">
+                            Назад
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row justify-content-center">
+                    <div class="col-sm-8 col-lg-8 col-xl-5">
+
+                        <div class="form-group">
+                            <b>Название Типа</b>
+                            <p>@Model.Name</p>
+                            <hr>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button class="btn btn-success btn-block" onclick="location.href='@Url.Action("Edit", "TypeBurial", @Model, null)'">
+                                    Изменить
+                                </button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button class="btn btn-danger btn-block" onclick="location.href='@Url.Action("Delete", "TypeBurial", @Model, null)'">
+                                    Удалить
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
