@@ -11,5 +11,5 @@ script:
     - dotnet build PsuHistoryWeb.sln -c Release
     #- dotnet test -c Release --no-build BllTest/BllTest.fsproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
 
-after_script:
-    - bash <(curl -s https://codecov.io/bash)
+#after_script:
+#    - bash <(curl -s https://codecov.io/bash)
